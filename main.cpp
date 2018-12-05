@@ -1,23 +1,5 @@
+#include "variadic_logger.h"
 #include <iostream>
-#include <sstream>
-
-template <typename T>
-void Log(std::stringstream& ss, const T& first){
-    ss << first;
-}
-
-template <typename T, typename... Types>
-void Log(std::stringstream& ss, const T& first, const Types&... args){
-    ss << first;
-    Log(ss, args...);
-}
-
-template <typename Logger, typename... Types>
-void Log(Logger& logger, const Types&... args){
-    std::stringstream stream;
-    Log(stream, args...);
-    logger << stream.str();
-}
 
 //Our custom class for errors
 class Error{
